@@ -1,0 +1,7 @@
+boss: Great job![pause=0.3] I'm sure you were great at putting the square in the square hole back in the day.
+boss: Normally[pause=0.3], you would have been on a timer for that.[pause=0.3] We have a quota to meet[pause=0.3], you know.
+boss: But since you're training[pause=0.3], I'm taking it easy on you.
+boss: However[pause=0.3], we do always appreciate being OVER quota!
+boss: So[pause=0.3], if at any point you think you're finished before the timer ends[pause=0.3], you can press [img width=32 height=32]res\://addons/controller_icons/assets/key/space.png[/img] to finish early!
+boss: Go on and try it now.
+do Global.allowEarlyDepotOpening()

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://crk244ubyscxe"]
+
+[ext_resource type="FontFile" uid="uid://b6u7brtg80qu" path="res://assets/font/7 Segment.ttf" id="1_5x3i2"]
+
+[resource]
+Button/font_sizes/font_size = 36
+Button/fonts/font = ExtResource("1_5x3i2")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_5x3i2")

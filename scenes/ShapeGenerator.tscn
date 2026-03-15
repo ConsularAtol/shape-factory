@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cwjqk07pvvm2r"]
+
+[ext_resource type="Texture2D" uid="uid://bljl6u3newumb" path="res://assets/sprite/shapegenerator.png" id="1_auvnc"]
+[ext_resource type="Script" uid="uid://dey8070lwa1vy" path="res://scenes/shape_generator.gd" id="1_giaao"]
+[ext_resource type="Texture2D" uid="uid://fubvrs1xtvwd" path="res://assets/sprite/shapegeneratorlight.png" id="3_vqkft"]
+[ext_resource type="Theme" uid="uid://crk244ubyscxe" path="res://assets/theme.tres" id="4_ygtcc"]
+
+[sub_resource type="Animation" id="Animation_mp54n"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vqkft"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.25]
+}
+
+[sub_resource type="Animation" id="Animation_ygtcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mp54n"]
+_data = {
+&"Close": SubResource("Animation_mp54n"),
+&"Open": SubResource("Animation_vqkft"),
+&"RESET": SubResource("Animation_ygtcc")
+}
+
+[node name="ShapeGenerator" type="Node2D" unique_id=1029985098]
+texture_filter = 1
+script = ExtResource("1_giaao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=663220744]
+texture = ExtResource("1_auvnc")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=101388428]
+position = Vector2(0, -46)
+color = Color(1, 0.6509804, 1, 1)
+energy = 0.0
+texture = ExtResource("3_vqkft")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1073724726]
+libraries/ = SubResource("AnimationLibrary_mp54n")
+
+[node name="SpawnCount" type="Label" parent="." unique_id=2127997876]
+offset_left = -12.0
+offset_top = -2.0
+offset_right = 34.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("4_ygtcc")
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

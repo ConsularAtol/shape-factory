@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bagb4eaklueob"]
+
+[ext_resource type="Script" uid="uid://dtlhcixrb0ll" path="res://scenes/robot_helper.gd" id="1_0n8bx"]
+[ext_resource type="Texture2D" uid="uid://bn1b431kt4t52" path="res://assets/sprite/cleanerbot.png" id="2_davwn"]
+[ext_resource type="Texture2D" uid="uid://cralo72hrpvxj" path="res://assets/sprite/cleanerbotlight.png" id="3_kei05"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vvbl"]
+radius = 11.0
+
+[node name="RobotHelper" type="RigidBody2D"]
+mass = 0.8
+script = ExtResource("1_0n8bx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_davwn")
+
+[node name="ShapeIndicator" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+texture = ExtResource("3_kei05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6vvbl")

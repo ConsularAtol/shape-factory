@@ -1,0 +1,348 @@
+[gd_scene format=4 uid="uid://crecbo1262djt"]
+
+[ext_resource type="Script" uid="uid://dkkflqqx4jyd4" path="res://scenes/menu.gd" id="1_vjb58"]
+[ext_resource type="Theme" uid="uid://crk244ubyscxe" path="res://assets/theme.tres" id="1_yqeox"]
+[ext_resource type="PackedScene" uid="uid://dq2sqhk4pvlna" path="res://scenes/Depot.tscn" id="2_con2f"]
+[ext_resource type="AudioStream" uid="uid://ciba3w30qhcyi" path="res://assets/sound/music/Local Forecast - Elevator.mp3" id="2_i6lef"]
+[ext_resource type="Texture2D" uid="uid://bnxem1cuadrtr" path="res://assets/sprite/tiles.png" id="2_mhnvy"]
+[ext_resource type="Script" uid="uid://dy6k8m8gmtxuc" path="res://scenes/title_screen_shape_spawner.gd" id="5_4ytvr"]
+[ext_resource type="PackedScene" uid="uid://1f0pc60xa8kf" path="res://scenes/Shape.tscn" id="5_g3eks"]
+[ext_resource type="Texture2D" uid="uid://msjsyv3j47nl" path="res://assets/sprite/logo.png" id="7_13sgg"]
+[ext_resource type="AudioStream" uid="uid://d3id0ghagl6bt" path="res://assets/sound/loss.mp3" id="7_v86rl"]
+[ext_resource type="Script" uid="uid://ddh8o8mq1ny54" path="res://scenes/settings_menu.gd" id="9_70i5f"]
+[ext_resource type="AudioStream" uid="uid://bdlb7xn5qerv" path="res://assets/sound/timertick.mp3" id="10_mj5lg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ytvr"]
+texture = ExtResource("2_mhnvy")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.0078125, -8, -1, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -0.9932618, -0.99609375, -1, -1.0073175, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g3eks"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4ytvr")
+
+[sub_resource type="Animation" id="Animation_a8y0u"]
+resource_name = "Fade In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jbj1t"]
+resource_name = "Fade Out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jkv2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muem4"]
+_data = {
+&"Fade In": SubResource("Animation_a8y0u"),
+&"Fade Out": SubResource("Animation_jbj1t"),
+&"RESET": SubResource("Animation_jkv2x")
+}
+
+[node name="Menu" type="Node2D" unique_id=418359263]
+script = ExtResource("1_vjb58")
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1695253001]
+stream = ExtResource("2_i6lef")
+autoplay = true
+bus = &"Music"
+
+[node name="Layer0" type="TileMapLayer" parent="." unique_id=807663641]
+texture_filter = 1
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAPj/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAADAPj/AAAAAAAAAAADAPn/AAAAAAAAAAADAPr/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAPj/AAAAAAAAAAAEAPn/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAPj/AAAAAAAAAAAFAPn/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAPj/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAPj/AAAAAAAAAAAIAPn/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAJAPr/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAKAPr/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAALAPj/AAAAAAAAAAALAPn/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAAMAPj/AAAAAAAAAAAMAPn/AAAAAAAAAAAMAPr/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AAAAAAAAAAAMAP7/AAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAPj/AAAAAAAAAAANAPn/AAAAAAAAAAANAPr/AAAAAAAAAAANAPv/AAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_g3eks")
+
+[node name="Layer1" type="TileMapLayer" parent="." unique_id=1713513109]
+texture_filter = 1
+use_parent_material = true
+tile_map_data = PackedByteArray("AAANAAcAAAACAAAAADANAPj/AAACAAAAAFAAAPj/AAACAAAAAAAAAAcAAAACAAAAAGAAAAYAAAABAAAAAAAAAAUAAAABAAAAAAAAAAQAAAABAAAAAAAAAAMAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAAAAP//AAABAAAAAAAAAP7/AAABAAAAAAAAAP3/AAABAAAAAAAAAPz/AAABAAAAAAAAAPv/AAABAAAAAAAAAPr/AAABAAAAAAAAAPn/AAABAAAAAAANAPn/AAABAAAAADANAPr/AAABAAAAADANAPv/AAABAAAAADANAPz/AAABAAAAADANAP3/AAABAAAAADANAP7/AAABAAAAADANAP//AAABAAAAADANAAAAAAABAAAAADANAAEAAAABAAAAADANAAIAAAABAAAAADANAAMAAAABAAAAADANAAQAAAABAAAAADANAAUAAAABAAAAADANAAYAAAABAAAAADAMAAcAAAABAAAAAGALAAcAAAABAAAAAGAKAAcAAAABAAAAAGAEAAcAAAABAAAAAGADAAcAAAABAAAAAGACAAcAAAABAAAAAGABAAcAAAABAAAAAGABAPj/AAABAAAAAFACAPj/AAABAAAAAFADAPj/AAABAAAAAFAEAPj/AAABAAAAAFAFAPj/AAABAAAAAFAGAPj/AAABAAAAAFAHAPj/AAABAAAAAFAIAPj/AAABAAAAAFAJAPj/AAABAAAAAFAKAPj/AAABAAAAAFALAPj/AAABAAAAAFAMAPj/AAABAAAAAFD///j/AAADAAAAAAD///n/AAADAAAAAAD///r/AAADAAAAAAD///v/AAADAAAAAAD///z/AAADAAAAAAD///3/AAADAAAAAAD///7/AAADAAAAAAD/////AAADAAAAAAD//wAAAAADAAAAAAD//wEAAAADAAAAAAD+/wIAAAADAAAAAAD+/wMAAAADAAAAAAD+/wQAAAADAAAAAAD+/wUAAAADAAAAAAD//wUAAAADAAAAAAD//wYAAAADAAAAAAD//wQAAAADAAAAAAD//wMAAAADAAAAAAD//wIAAAADAAAAAAD//wcAAAADAAAAAAD//wgAAAADAAAAAAAAAAgAAAADAAAAAAABAAgAAAADAAAAAAACAAgAAAADAAAAAAADAAgAAAADAAAAAAAEAAgAAAADAAAAAAAKAAgAAAADAAAAAAALAAgAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAAOAAcAAAADAAAAAAAOAAYAAAADAAAAAAAOAAUAAAADAAAAAAAOAAQAAAADAAAAAAAOAAMAAAADAAAAAAAOAAIAAAADAAAAAAAOAAEAAAADAAAAAAAOAAAAAAADAAAAAAAOAP//AAADAAAAAAAOAP7/AAADAAAAAAAOAPz/AAADAAAAAAAOAP3/AAADAAAAAAAOAPv/AAADAAAAAAAOAPr/AAADAAAAAAAOAPn/AAADAAAAAAAOAPj/AAADAAAAAAAOAPf/AAADAAAAAAANAPf/AAADAAAAAAAMAPf/AAADAAAAAAALAPf/AAADAAAAAAAKAPf/AAADAAAAAAAJAPf/AAADAAAAAAAIAPf/AAADAAAAAAAHAPf/AAADAAAAAAAGAPf/AAADAAAAAAAFAPf/AAADAAAAAAAEAPf/AAADAAAAAAADAPf/AAADAAAAAAACAPf/AAADAAAAAAABAPf/AAADAAAAAAAAAPf/AAADAAAAAAD///f/AAADAAAAAADx//f/AAADAAAAAADx//j/AAADAAAAAADx//n/AAADAAAAAADx//r/AAADAAAAAADx//v/AAADAAAAAADx//z/AAADAAAAAADx//3/AAADAAAAAADx//7/AAADAAAAAADx////AAADAAAAAADx/wAAAAADAAAAAADx/wEAAAADAAAAAADx/wIAAAADAAAAAADx/wMAAAADAAAAAADx/wQAAAADAAAAAADx/wUAAAADAAAAAADx/wYAAAADAAAAAADx/wcAAAADAAAAAADx/wgAAAADAAAAAADy//f/AAADAAAAAADy//j/AAADAAAAAADy//n/AAADAAAAAADy//r/AAADAAAAAADy//v/AAADAAAAAADy//z/AAADAAAAAADy//3/AAADAAAAAADy//7/AAADAAAAAADy////AAADAAAAAADy/wAAAAADAAAAAADy/wEAAAADAAAAAADy/wIAAAADAAAAAADy/wMAAAADAAAAAADy/wQAAAADAAAAAADy/wUAAAADAAAAAADy/wYAAAADAAAAAADy/wcAAAADAAAAAADy/wgAAAADAAAAAADz//f/AAADAAAAAADz//j/AAADAAAAAADz//n/AAADAAAAAADz//r/AAADAAAAAADz//v/AAADAAAAAADz//z/AAADAAAAAADz//3/AAADAAAAAADz//7/AAADAAAAAADz////AAADAAAAAADz/wAAAAADAAAAAADz/wEAAAADAAAAAADz/wIAAAADAAAAAADz/wMAAAADAAAAAADz/wQAAAADAAAAAADz/wUAAAADAAAAAADz/wYAAAADAAAAAADz/wcAAAADAAAAAADz/wgAAAADAAAAAAD0//f/AAADAAAAAAD0//j/AAADAAAAAAD0//n/AAADAAAAAAD0//r/AAADAAAAAAD0//v/AAADAAAAAAD0//z/AAADAAAAAAD0//3/AAADAAAAAAD0//7/AAADAAAAAAD0////AAADAAAAAAD0/wAAAAADAAAAAAD0/wEAAAADAAAAAAD0/wIAAAADAAAAAAD0/wMAAAADAAAAAAD0/wQAAAADAAAAAAD0/wUAAAADAAAAAAD0/wYAAAADAAAAAAD0/wcAAAADAAAAAAD0/wgAAAADAAAAAAD1//f/AAADAAAAAAD1//j/AAADAAAAAAD1//n/AAADAAAAAAD1//r/AAADAAAAAAD1//v/AAADAAAAAAD1//z/AAADAAAAAAD1//3/AAADAAAAAAD1//7/AAADAAAAAAD1////AAADAAAAAAD1/wAAAAADAAAAAAD1/wEAAAADAAAAAAD1/wIAAAADAAAAAAD1/wMAAAADAAAAAAD1/wQAAAADAAAAAAD1/wUAAAADAAAAAAD1/wYAAAADAAAAAAD1/wcAAAADAAAAAAD1/wgAAAADAAAAAAD2//f/AAADAAAAAAD2//j/AAADAAAAAAD2//n/AAADAAAAAAD2//r/AAADAAAAAAD2//v/AAADAAAAAAD2//z/AAADAAAAAAD2//3/AAADAAAAAAD2//7/AAADAAAAAAD2////AAADAAAAAAD2/wAAAAADAAAAAAD2/wEAAAADAAAAAAD2/wIAAAADAAAAAAD2/wMAAAADAAAAAAD2/wQAAAADAAAAAAD2/wUAAAADAAAAAAD2/wYAAAADAAAAAAD2/wcAAAADAAAAAAD2/wgAAAADAAAAAAD3//f/AAADAAAAAAD3//j/AAADAAAAAAD3//n/AAADAAAAAAD3//r/AAADAAAAAAD3//v/AAADAAAAAAD3//z/AAADAAAAAAD3//3/AAADAAAAAAD3//7/AAADAAAAAAD3////AAADAAAAAAD3/wAAAAADAAAAAAD3/wEAAAADAAAAAAD3/wIAAAADAAAAAAD3/wMAAAADAAAAAAD3/wQAAAADAAAAAAD3/wUAAAADAAAAAAD3/wYAAAADAAAAAAD3/wcAAAADAAAAAAD3/wgAAAADAAAAAAD4//f/AAADAAAAAAD4//j/AAADAAAAAAD4//n/AAADAAAAAAD4//r/AAADAAAAAAD4//v/AAADAAAAAAD4//z/AAADAAAAAAD4//3/AAADAAAAAAD4//7/AAADAAAAAAD4////AAADAAAAAAD4/wAAAAADAAAAAAD4/wEAAAADAAAAAAD4/wIAAAADAAAAAAD4/wMAAAADAAAAAAD4/wQAAAADAAAAAAD4/wUAAAADAAAAAAD4/wYAAAADAAAAAAD4/wcAAAADAAAAAAD4/wgAAAADAAAAAAD5//f/AAADAAAAAAD5//j/AAADAAAAAAD5//n/AAADAAAAAAD5//r/AAADAAAAAAD5//v/AAADAAAAAAD5//z/AAADAAAAAAD5//3/AAADAAAAAAD5//7/AAADAAAAAAD5////AAADAAAAAAD5/wAAAAADAAAAAAD5/wEAAAADAAAAAAD5/wIAAAADAAAAAAD5/wMAAAADAAAAAAD5/wQAAAADAAAAAAD5/wUAAAADAAAAAAD5/wYAAAADAAAAAAD5/wcAAAADAAAAAAD5/wgAAAADAAAAAAD6//f/AAADAAAAAAD6//j/AAADAAAAAAD6//n/AAADAAAAAAD6//r/AAADAAAAAAD6//v/AAADAAAAAAD6//z/AAADAAAAAAD6//3/AAADAAAAAAD6//7/AAADAAAAAAD6////AAADAAAAAAD6/wAAAAADAAAAAAD6/wEAAAADAAAAAAD6/wIAAAADAAAAAAD6/wMAAAADAAAAAAD6/wQAAAADAAAAAAD6/wUAAAADAAAAAAD6/wYAAAADAAAAAAD6/wcAAAADAAAAAAD6/wgAAAADAAAAAAD7//f/AAADAAAAAAD7//j/AAADAAAAAAD7//n/AAADAAAAAAD7//r/AAADAAAAAAD7//v/AAADAAAAAAD7//z/AAADAAAAAAD7//3/AAADAAAAAAD7//7/AAADAAAAAAD7////AAADAAAAAAD7/wAAAAADAAAAAAD7/wEAAAADAAAAAAD7/wIAAAADAAAAAAD7/wMAAAADAAAAAAD7/wQAAAADAAAAAAD7/wUAAAADAAAAAAD7/wYAAAADAAAAAAD7/wcAAAADAAAAAAD7/wgAAAADAAAAAAD8//f/AAADAAAAAAD8//j/AAADAAAAAAD8//n/AAADAAAAAAD8//r/AAADAAAAAAD8//v/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAAAAAD8//7/AAADAAAAAAD8////AAADAAAAAAD8/wAAAAADAAAAAAD8/wEAAAADAAAAAAD8/wIAAAADAAAAAAD8/wMAAAADAAAAAAD8/wQAAAADAAAAAAD8/wUAAAADAAAAAAD8/wYAAAADAAAAAAD8/wcAAAADAAAAAAD8/wgAAAADAAAAAAD9//f/AAADAAAAAAD9//j/AAADAAAAAAD9//n/AAADAAAAAAD9//r/AAADAAAAAAD9//v/AAADAAAAAAD9//z/AAADAAAAAAD9//3/AAADAAAAAAD9//7/AAADAAAAAAD9////AAADAAAAAAD9/wAAAAADAAAAAAD9/wEAAAADAAAAAAD9/wIAAAADAAAAAAD9/wMAAAADAAAAAAD9/wQAAAADAAAAAAD9/wUAAAADAAAAAAD9/wYAAAADAAAAAAD9/wcAAAADAAAAAAD9/wgAAAADAAAAAAD+//f/AAADAAAAAAD+//j/AAADAAAAAAD+//n/AAADAAAAAAD+//r/AAADAAAAAAD+//v/AAADAAAAAAD+//z/AAADAAAAAAD+//3/AAADAAAAAAD+//7/AAADAAAAAAD+////AAADAAAAAAD+/wAAAAADAAAAAAD+/wEAAAADAAAAAAD+/wYAAAADAAAAAAD+/wcAAAADAAAAAAD+/wgAAAADAAAAAAAJAAcAAAABAAAAAGAIAAgAAAABAAAAADAIAAkAAAABAAAAADAIAAoAAAABAAAAADAIAAsAAAABAAAAADAFAAsAAAABAAAAAAAFAAoAAAABAAAAAAAFAAkAAAABAAAAAAAFAAgAAAABAAAAAAAJAAgAAAADAAAAAAAIAAcAAAAEAAAAADAFAAcAAAAEAAAAAGA=")
+tile_set = SubResource("TileSet_g3eks")
+
+[node name="Depot" parent="." unique_id=1807633823 instance=ExtResource("2_con2f")]
+position = Vector2(112, 0)
+isTitleScreenDepot = true
+
+[node name="TitleScreenShapeSpawner" type="Node2D" parent="." unique_id=757798264]
+position = Vector2(113, 159)
+script = ExtResource("5_4ytvr")
+shape_scene = ExtResource("5_g3eks")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=452719251]
+zoom = Vector2(2.5, 2.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=749167817]
+
+[node name="PB" type="Label" parent="CanvasLayer" unique_id=917445630]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 167.0
+offset_top = -69.0
+offset_right = 269.0
+offset_bottom = -35.0
+grow_vertical = 2
+theme = ExtResource("1_yqeox")
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+text = "PB: 999"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=657108778]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+offset_right = 337.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=959052969]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "Made by Consular"
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1450614797]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "Music By Kevin MacLeod"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=958255772]
+texture_filter = 1
+offset_left = 53.0
+offset_top = 54.0
+offset_right = 245.0
+offset_bottom = 150.0
+scale = Vector2(2, 2)
+texture = ExtResource("7_13sgg")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=21338614]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -49.0
+offset_right = 95.0
+offset_bottom = 49.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=1321941868]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=892765403]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1972617105]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=2138408880]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "QUIT"
+
+[node name="BlackScreen" type="ColorRect" parent="CanvasLayer" unique_id=1865776109]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=238940719]
+libraries/ = SubResource("AnimationLibrary_muem4")
+
+[node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=1899506609]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_70i5f")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SettingsMenu" unique_id=927734161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.56078434)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsMenu/ColorRect" unique_id=1129247860]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MusicVolume" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer" unique_id=49384262]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MusicVolume" unique_id=1728086782]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "Music Volume"
+
+[node name="Slider" type="HSlider" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MusicVolume" unique_id=608842650]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+value = 100.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MusicVolume" unique_id=480700140]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "100%"
+
+[node name="SFXVolume" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer" unique_id=467725162]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/SFXVolume" unique_id=715913264]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "SFX Volume"
+
+[node name="Slider" type="HSlider" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/SFXVolume" unique_id=240635309]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+value = 100.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/SFXVolume" unique_id=621048812]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "100%"
+
+[node name="MaxFPS" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer" unique_id=1348010583]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MaxFPS" unique_id=647551124]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "Max FPS"
+
+[node name="Slider" type="HSlider" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MaxFPS" unique_id=586302243]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+min_value = 5.0
+max_value = 240.0
+value = 60.0
+
+[node name="Value" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MaxFPS" unique_id=1873972160]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "100"
+
+[node name="FullScreen" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer" unique_id=386818878]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/FullScreen" unique_id=419027357]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "Fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/FullScreen" unique_id=558816949]
+layout_mode = 2
+
+[node name="VSync" type="HBoxContainer" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer" unique_id=75307396]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/VSync" unique_id=645346854]
+layout_mode = 2
+theme = ExtResource("1_yqeox")
+text = "VSync"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/VSync" unique_id=749067228]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/SettingsMenu/ColorRect" unique_id=378762085]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_yqeox")
+text = "Save"
+
+[node name="AudioSliderNoise" type="AudioStreamPlayer2D" parent="CanvasLayer/SettingsMenu" unique_id=1054012012]
+stream = ExtResource("10_mj5lg")
+
+[node name="LoudBuzzerIdk" type="AudioStreamPlayer2D" parent="." unique_id=305120850]
+stream = ExtResource("7_v86rl")
+volume_db = -41.204
+bus = &"SFX"
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MusicVolume/Slider" to="CanvasLayer/SettingsMenu" method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/SFXVolume/Slider" to="CanvasLayer/SettingsMenu" method="_on_sfx_volume_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/MaxFPS/Slider" to="CanvasLayer/SettingsMenu" method="_on_maxfps_value_changed"]
+[connection signal="toggled" from="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/FullScreen/CheckBox" to="CanvasLayer/SettingsMenu" method="_on_fullscreen_box_toggled"]
+[connection signal="toggled" from="CanvasLayer/SettingsMenu/ColorRect/VBoxContainer/VSync/CheckBox" to="CanvasLayer/SettingsMenu" method="_on_vsync_box_toggled"]
+[connection signal="pressed" from="CanvasLayer/SettingsMenu/ColorRect/Button" to="CanvasLayer/SettingsMenu" method="_on_close_button_pressed"]

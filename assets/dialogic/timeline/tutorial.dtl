@@ -1,0 +1,26 @@
+do Global.startTutorial()
+boss: Well hey, hey, hey there new hire!
+boss: ...or old hire[pause=0.2], I kinda forget what you all look like.
+boss: I'm speaking to you through our newly installed security system!
+boss: Yes![pause=0.3] I can see[pause=0.3], hear[pause=0.3], and speak to you remotely!
+boss: (It also means Consular doesn't have to draw me)[pause=0.2][aa=0]
+boss: Anyways![pause=0.3] HR tells me you're in for some training!
+boss: But[pause=0.3], let's be honest[pause=0.3], do you really need it?
+- Yes
+	boss: I was really hoping you'd say no...[pause=0.2][aa=0]
+	boss: Alright[pause=0.3], alright[pause=0.3], let me show you the ropes!
+	boss: You see that cardboard box sitting by the south wall?
+	boss: That's our brand new[pause=0.2], state-of-the-art[pause=0.2], Shape Printer Automated by Magic![pause=0.5](or S.P.A.M for short)
+	boss: That's right![pause=0.2] We found a way to produce an infinite amount of matter![pause=0.2] No better use for it than a shape factory[pause=0.2], am I right?
+	boss: Oh, look![pause=0.3] It's printing some now!
+	do Global.spawnTutorialShapes()
+	[wait time="1.5"]
+	boss: Isn't it just beautiful?
+	boss: Your job is simple[pause=0.3], just sort the shapes into their correct depots.
+	boss: Oh[pause=0.3], and ignore the pentagon.
+	boss: It has too many sides[pause=0.3], bad for business.
+	boss: We'll have someone clean them up for you.
+	boss: Go on and give it a shot!
+- No (Skip Tutorial)
+	boss: Oh, thank god!
+	do Global.endTutorialDialogue()

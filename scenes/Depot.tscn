@@ -1,0 +1,264 @@
+[gd_scene format=3 uid="uid://dq2sqhk4pvlna"]
+
+[ext_resource type="Script" uid="uid://b6w5nyr6hcejo" path="res://scenes/depot.gd" id="1_fp1au"]
+[ext_resource type="Texture2D" uid="uid://dh2inms0ewjvi" path="res://assets/sprite/depots/square.png" id="1_q18lr"]
+[ext_resource type="Texture2D" uid="uid://bgsjq1x888v5o" path="res://assets/sprite/depots/squaredoorleft.png" id="2_5ou7e"]
+[ext_resource type="Texture2D" uid="uid://clv0fn65mtfoo" path="res://assets/sprite/depots/squaredoorright.png" id="3_fp1au"]
+[ext_resource type="AudioStream" uid="uid://b8lfm8r74yhv4" path="res://assets/sound/dooropen.mp3" id="5_6rfxn"]
+[ext_resource type="AudioStream" uid="uid://b0snhbiyrvt6e" path="res://assets/sound/doorclose.mp3" id="6_y36ey"]
+
+[sub_resource type="Animation" id="Animation_rprc8"]
+resource_name = "Close"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-56, 0), Vector2(-28, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, 0), Vector2(28, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorLeft:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(56, 0, 0, 112), Rect2(0, 0, 56, 112)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorRight:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 0, 112), Rect2(0, 0, 56, 112)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorClose:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5ou7e"]
+resource_name = "Open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-28, 0), Vector2(-56, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(28, 0), Vector2(56, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorLeft:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 56, 112), Rect2(56, 0, 0, 112)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorRight:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 56, 112), Rect2(0, 0, 0, 112)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorOpen:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fp1au"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorLeft:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 56, 112)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorRight:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 56, 112)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DoorOpen:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DoorClose:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rprc8"]
+_data = {
+&"Close": SubResource("Animation_rprc8"),
+&"Open": SubResource("Animation_5ou7e"),
+&"RESET": SubResource("Animation_fp1au")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp1au"]
+size = Vector2(112, 112)
+
+[node name="Depot" type="Node2D" unique_id=649445305]
+script = ExtResource("1_fp1au")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=838379624]
+texture_filter = 1
+texture = ExtResource("1_q18lr")
+
+[node name="DoorLeft" type="Sprite2D" parent="." unique_id=1652822697]
+texture_filter = 1
+position = Vector2(-28, 0)
+texture = ExtResource("2_5ou7e")
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 112)
+region_filter_clip_enabled = true
+
+[node name="DoorRight" type="Sprite2D" parent="." unique_id=1720098137]
+texture_filter = 1
+position = Vector2(28, 0)
+texture = ExtResource("3_fp1au")
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 112)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1057613976]
+libraries/ = SubResource("AnimationLibrary_rprc8")
+
+[node name="ShapeCollectionZone" type="Area2D" parent="." unique_id=1432290119]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShapeCollectionZone" unique_id=777489754]
+shape = SubResource("RectangleShape2D_fp1au")
+
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="." unique_id=869987255]
+stream = ExtResource("5_6rfxn")
+volume_db = -14.136
+bus = &"SFX"
+
+[node name="DoorClose" type="AudioStreamPlayer2D" parent="." unique_id=2095531345]
+stream = ExtResource("6_y36ey")
+volume_db = -14.136
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

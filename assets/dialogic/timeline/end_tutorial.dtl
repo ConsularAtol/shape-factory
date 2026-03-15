@@ -1,0 +1,5 @@
+boss: Well, I'm gonna go back to watching YouTube[pause=0.2][aa=0]
+boss: I mean[pause=0.3]- doing important work in my office!
+boss: Go make me some money[pause=0.2], champ!
+do Global.setSeenTutorial(true)
+do Global.allowEarlyDepotOpening()

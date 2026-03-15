@@ -1,0 +1,9 @@
+do Global.disallowEarlyDepotOpening()
+boss: I have no idea where those depots lead to!
+boss: Every time you successfully complete a wave[pause=0.3], you will earn an upgrade!
+boss: That's right[pause=0.3], baby[pause=0.3], it's a rougelike now.
+boss: Some of these upgrades are really cool and useful[pause=0.3], others are...[pause=0.5] others.
+boss: But there's some that are really rare![pause=0.3] You'll know when you encounter one[pause=0.3], it'll be screaming for your attention!
+boss: You might even have one right now![pause=0.3] I don't know[pause=0.3], that's the one thing I can't see despite it coming out of my own pocket!
+boss: As soon as you take an upgrade[pause=0.3], the next wave will start[pause=0.3], and your training will be over.
+do Global.endTutorialDialogue()
