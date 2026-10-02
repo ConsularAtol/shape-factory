@@ -95,7 +95,7 @@ func _on_loss() -> void:
     _pb_fade_tween = create_tween()
     _pb_fade_tween.tween_property(_pb_label, "modulate:a", 1.0, PB_FADE_DURATION)
     randomizeLossQuip()
-    Dialogic.start("lossquip")
+    Dialogic.start("res://assets/dialogic/timeline/lossquip.dtl")
 
 func _process(delta: float) -> void:
     if !_rainbow_active:

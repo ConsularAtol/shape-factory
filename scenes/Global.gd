@@ -66,7 +66,7 @@ func _applySettings(settings: Dictionary) -> void:
 	Engine.max_fps = settings.get("max_fps")
 
 func endTutorialDialogue() -> void:
-	Dialogic.start("dialogic/end_tutorial")
+	Dialogic.start("res://assets/dialogic/timeline/end_tutorial.dtl")
 
 func startTutorial() -> void:
 	var current_scene := get_tree().current_scene
@@ -85,7 +85,7 @@ func disallowEarlyDepotOpening() -> void:
 func _process(_delta: float) -> void:
 	if inTutorial && !_tutorial2Started && !isShapeDragActive() && _allDepotsHaveTheirShapes():
 		_tutorial2Started = true
-		Dialogic.start("dialogic/tutorial2")
+		Dialogic.start("res://assets/dialogic/timeline/tutorial2.dtl")
 
 func _allDepotsHaveTheirShapes() -> bool:
 	if !inTutorial:
@@ -319,7 +319,7 @@ func startGame() -> void:
 	_activeDragShapeIds.clear()
 	_activeDragShapeType = -1
 	if !seenTutorial:
-		Dialogic.start("dialogic/tutorial")
+		Dialogic.start("res://assets/dialogic/timeline/tutorial.dtl")
 	else:
 		nextWave.emit()
 
@@ -331,7 +331,7 @@ func endDepotAnimation() -> void:
 	_depotAnimationLocks = max(_depotAnimationLocks - 1, 0)
 	if previous_locks > 0 && _depotAnimationLocks == 0:
 		if inTutorial:
-			Dialogic.start("dialogic/tutorial3")
+			Dialogic.start("res://assets/dialogic/timeline/tutorial3.dtl")
 		inGame = true
 		wave += 1
 		upgrades.emit()

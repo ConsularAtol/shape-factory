@@ -104,6 +104,7 @@ tile_set = SubResource("TileSet_g3eks")
 [node name="Depot" parent="." unique_id=1807633823 instance=ExtResource("2_con2f")]
 position = Vector2(112, 0)
 isTitleScreenDepot = true
+shape = 1
 
 [node name="TitleScreenShapeSpawner" type="Node2D" parent="." unique_id=757798264]
 position = Vector2(113, 159)

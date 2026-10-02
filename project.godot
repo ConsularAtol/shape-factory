@@ -41,11 +41,11 @@ directories/dch_directory={
 "boss": "res://assets/dialogic/character/boss.dch"
 }
 directories/dtl_directory={
-"dialogic/end_tutorial": "res://assets/dialogic/timeline/end_tutorial.dtl",
-"dialogic/tutorial": "res://assets/dialogic/timeline/tutorial.dtl",
-"dialogic/tutorial2": "res://assets/dialogic/timeline/tutorial2.dtl",
-"dialogic/tutorial3": "res://assets/dialogic/timeline/tutorial3.dtl",
-"lossquip": "res://assets/dialogic/timeline/lossquip.dtl"
+"end_tutorial": "res://assets/dialogic/timeline/end_tutorial.dtl",
+"lossquip": "res://assets/dialogic/timeline/lossquip.dtl",
+"tutorial": "res://assets/dialogic/timeline/tutorial.dtl",
+"tutorial2": "res://assets/dialogic/timeline/tutorial2.dtl",
+"tutorial3": "res://assets/dialogic/timeline/tutorial3.dtl"
 }
 layout/style_directory={}
 extensions_folder="res://addons/dialogic_additions"
